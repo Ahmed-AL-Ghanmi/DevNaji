@@ -1,0 +1,772 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- ====== SEO ====== -->
+    <title>DevNaji | Portfolio</title>
+    <meta name="description"
+        content="Ahmed Al-Ghanmi (DevNaji) — Software Engineer specializing in full-stack web apps, mobile applications, and enterprise systems. Based in Istanbul, Turkey.">
+    <meta name="keywords"
+        content="DevNaji, Ahmed Al-Ghanmi, Software Engineer, Web Development, Full Stack, Mobile Apps, Istanbul">
+    <meta name="author" content="Ahmed Al-Ghanmi - DevNaji">
+    <meta name="robots" content="index, follow">
+
+    <!-- ====== SECURITY ====== -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
+    <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
+    <meta http-equiv="Content-Security-Policy"
+        content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://formsubmit.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://wa.me;">
+
+    <!-- ====== ICONS & THEME ====== -->
+    <link rel="icon" href="images/logo.png" type="image/png">
+    <link rel="apple-touch-icon" href="images/logo.png">
+    <meta name="theme-color" content="#020205">
+
+    <!-- ====== PERFORMANCE: Preconnect ====== -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://cdnjs.cloudflare.com">
+    <link rel="preconnect" href="https://formsubmit.co">
+
+    <!-- Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;700;800;900&family=Outfit:wght@300;400;500;600;800;900&display=swap"
+        rel="stylesheet">
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css?v=27.0">
+
+    <!-- ====== HIGH-PRIORITY: Language Init (must run before render) ====== -->
+    <script>
+        (function () {
+            var lang = localStorage.getItem('selectedLang');
+            if (!lang) {
+                var userLang = (navigator.language || navigator.userLanguage || 'en').toLowerCase();
+                if (userLang.indexOf('ar') !== -1) lang = 'ar';
+                else if (userLang.indexOf('tr') !== -1) lang = 'tr';
+                else lang = 'en';
+            }
+            document.documentElement.lang = lang;
+            document.documentElement.dir = (lang === 'ar' ? 'rtl' : 'ltr');
+        })();
+    </script>
+    <!-- ====== SEO SCHEMA (JSON-LD) ====== -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Ahmed Al-Ghanmi",
+      "alternateName": "DevNaji",
+      "url": "https://devnaji.com",
+      "image": "https://devnaji.com/images/logo.png",
+      "sameAs": [
+        "https://github.com/Ahmed-AL-Ghanmi",
+        "https://www.linkedin.com/in/ahmed-al-ghanmi-31b21b3b9/",
+        "https://x.com/dev_naji",
+        "https://www.instagram.com/dev.naji/"
+      ],
+      "jobTitle": "Software Engineer",
+      "knowsAbout": ["Web Development", "Software Engineering", "Mobile Applications", "Cloud Solutions"]
+    }
+    </script>
+</head>
+
+<body>
+    <!-- Top Scroll Progress -->
+    <div class="top-scroll-progress"></div>
+
+    <!-- V13 Elite Preloader -->
+    <div class="preloader">
+        <div class="preloader-content">
+            <div class="premium-logo-wrap">
+                <div class="logo-ring"></div>
+                <img src="images/logo.png" alt="DevNaji Logo" class="logo-img-inside">
+            </div>
+        </div>
+    </div>
+
+    <!-- Noise Overlay -->
+    <div class="noise-overlay"></div>
+
+    <!-- Custom Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Header -->
+    <header id="header">
+        <div class="header-container container">
+            <div class="logo">
+                <a href="#home" class="text-logo en-font"><img src="images/logo.png" alt="DevNaji"></a>
+            </div>
+
+            <nav class="nav-links">
+                <a href="#home" class="nav-link active" data-i18n="nav_home">الرئيسية</a>
+                <a href="#bento-master" class="nav-link" data-i18n="nav_about">من أنا</a>
+                <a href="#process" class="nav-link" data-i18n="nav_method">آلية العمل</a>
+                <a href="#portfolio" class="nav-link" data-i18n="nav_portfolio">معرض الأعمال</a>
+                <a href="#contact" class="nav-link" data-i18n="nav_contact">تواصل معي</a>
+            </nav>
+
+            <div class="header-actions">
+                <div class="lang-switcher desktop-lang-switcher">
+                    <button class="lang-btn active" data-lang="ar">AR</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="tr">TR</button>
+                </div>
+                <div class="lang-switcher mobile-lang-switcher">
+                    <button class="lang-btn active" data-lang="ar">AR</button>
+                    <button class="lang-btn" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="tr">TR</button>
+                </div>
+                <div class="hamburger magnetic-item">
+                    <div class="line"></div>
+                    <div class="line"></div>
+                    <div class="line"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- V6/V7 Hero Section (Massive Typography & Aurora) -->
+    <section id="home" class="hero v6-hero">
+        <div class="hero-bg">
+            <div class="aurora-bg"></div>
+            <div class="hero-img-full"></div>
+            <div class="hero-overlay-gradient"></div>
+            <div class="grid-overlay"></div>
+        </div>
+
+        <!-- Vertical Side Social Bar - Ultra Pro -->
+        <div class="hero-side-social reveal blur-reveal delay-3">
+            <span class="social-text">Follow Me</span>
+            <div class="social-line"></div>
+            <a href="https://wa.me/905355255446" class="magnetic-item" title="WhatsApp"><i
+                    class="fa-brands fa-whatsapp"></i></a>
+            <a href="https://x.com/dev_naji" class="magnetic-item" title="Twitter"><i
+                    class="fa-brands fa-x-twitter"></i></a>
+            <a href="https://www.instagram.com/dev.naji/" class="magnetic-item" title="Instagram"><i
+                    class="fa-brands fa-instagram"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100079937750350" class="magnetic-item" title="Facebook"><i
+                    class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/ahmed-al-ghanmi-31b21b3b9/" class="magnetic-item" title="LinkedIn"><i
+                    class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/Ahmed-AL-Ghanmi" class="magnetic-item" title="GitHub"><i
+                    class="fa-brands fa-github"></i></a>
+        </div>
+
+        <div class="container hero-split-layout">
+            <div class="hero-text-side reveal blur-reveal">
+                <!-- V20 Extreme Bio-Widget (Consolidated Avatar & Welcome) -->
+                <div class="hero-bio-widget magnetic-item">
+                    <div class="bio-info">
+                        <div class="bio-status magnetic-item"><span class="pulse-dot"></span><span
+                                data-i18n="hero_status">متاح للمشاريع الذكية</span></div>
+                        <span class="bio-welcome" data-i18n="hero_welcome">نصحبكم في رحلة نحو المستقبل الرقمي</span>
+                        <span class="bio-name" data-i18n="hero_name">أنا أحمد الغانمي</span>
+                    </div>
+                    <div class="bio-avatar">
+                        <img src="images/dn1.png" alt="Ahmed Al-Ghanmi - DevNaji Software Engineer" loading="eager"
+                            fetchpriority="high">
+                    </div>
+                </div>
+
+                <h2 class="ar-title typed-title">
+                    <span class="typed-text en-font"></span><span class="cursor-type"></span>
+                </h2>
+                <p class="hero-sub" data-i18n="hero_sub" style="font-size: 1.3rem; margin-bottom: 45px;">من الهندسة
+                    المعمارية للنظام إلى البرمجة الدقيقة. أقدم حلولاً برمجية متطورة للشركات الناشئة والمؤسسات الطموحة.
+                </p>
+
+                <div class="hero-buttons-side">
+                    <a href="#portfolio" class="btn btn-primary btn-large magnetic-item" data-i18n="hero_btn">استكشف
+                        أعمالي <i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+            </div>
+
+            <!-- V20 Glass IDE Layout (Right Side) -->
+            <div class="hero-graphic-side reveal blur-reveal delay-3">
+                <div class="tilt-card center-card" data-tilt data-tilt-max="5" data-tilt-speed="400" data-tilt-glare
+                    data-tilt-max-glare="0.2">
+                    <div class="profile-panel glass-card glass-ide" style="text-align: left;">
+                        <div class="ide-tabs">
+                            <div class="ide-tab active" data-file="developer">developer.js</div>
+                            <div class="ide-tab" data-file="profile">profile.json</div>
+                        </div>
+                        <div class="terminal-code en-font">
+                            <div class="code-block active" id="code-developer">
+                                <pre style="margin: 0; font-family: monospace; line-height: 1.6;">
+<span class="c-purple">const</span> <span class="c-blue">DevNaji</span> <span class="c-cyan">=</span> {
+  <span class="c-red">role</span>: <span class="c-green">'Software Engineer'</span>,
+  <span class="c-red">skills</span>: [<span class="c-green">'Web Apps'</span>, <span class="c-green">'Mobile'</span>],
+  <span class="c-red">vision</span>: <span class="c-green">'Building the Future'</span>,
+  <span class="c-red">status</span>: <span class="c-yellow">true</span>
+};
+
+<span class="c-purple">export default</span> DevNaji;
+</pre>
+                            </div>
+                            <div class="code-block" id="code-profile" style="display: none;">
+                                <pre style="margin: 0; font-family: monospace; line-height: 1.6;">
+{
+  <span class="c-red">"name"</span>: <span class="c-green">"DevNaji"</span>,
+  <span class="c-red">"title"</span>: <span class="c-green">"System Architect"</span>,
+  <span class="c-red">"location"</span>: <span class="c-green">"Yemen"</span>,
+  <span class="c-red">"experience"</span>: <span class="c-yellow">5</span>,
+  <span class="c-red">"available"</span>: <span class="c-yellow">true</span>
+}
+</pre>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Infinite Tech Slider -->
+    <div class="tech-slider border-y">
+        <div class="tech-slide-track en-font">
+            <!-- First Set -->
+            <div class="slide"><span>React.js</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>Next.js</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>Vue.js</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>TypeScript</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>TailwindCSS</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>Node.js</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>Figma</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <!-- Second Set -->
+            <div class="slide"><span>React.js</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>Next.js</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>Vue.js</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>TypeScript</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>TailwindCSS</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>Node.js</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+            <div class="slide"><span>Figma</span> <i class="fa-solid fa-star-of-life tech-star"></i></div>
+        </div>
+    </div>
+
+    <!-- V6 Bento Master Grid (About + Skills) -->
+    <section id="bento-master" class="bento-section">
+        <div class="container relative-z">
+            <div class="section-title-wrap text-center reveal blur-reveal">
+                <span class="kicker en-font" data-i18n="kicker_about">[ THE ARCHITECT ]</span>
+                <h2 class="section-title" data-i18n="section_about">منظومة إبداعية <span>متكاملة</span></h2>
+            </div>
+
+            <div class="bento-wrapper reveal blur-reveal delay-1">
+                <!-- Large Photo Card (Editorial Style) -->
+                <div class="bento-item bento-photo glass-card tilt-card" data-tilt data-tilt-max="3"
+                    data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                    <div class="editorial-inner">
+                        <img src="images/dn.png" alt="Ahmed Al-Ghanmi - DevNaji" class="editorial-img" loading="lazy">
+                        <div class="editorial-badge en-font">System Architect</div>
+                        <div class="photo-overlay"></div>
+                    </div>
+                    <div class="experience-badge magnetic-item">
+                        <span class="years"><span class="counter" data-target="5">0</span>+</span>
+                        <span class="txt" data-i18n="about_exp">سنوات خبرة</span>
+                    </div>
+                </div>
+
+                <!-- Bio Block (Spans 2 cols, 1 row) -->
+                <div class="bento-item bento-bio glass-card tilt-card" data-tilt data-tilt-max="3" data-tilt-speed="400"
+                    data-tilt-glare data-tilt-max-glare="0.05">
+                    <h3 class="bento-title" data-i18n="about_title">الرؤية والاحترافية</h3>
+                    <p data-i18n="about_desc">أنا مهندس برمجيات شغوف، أكرس خبرتي لتطوير وتصميم الحلول الرقمية التي تعيد
+                        تعريف معايير السوق وتدفع بحدود الابتكار إلى آفاق جديدة.</p>
+                    <p data-i18n="about_desc_2">أمتلك خبرة عميقة في هندسة النظم البرمجية، بناء المنصات الذكية، وتطوير
+                        تطبيقات الجوال التي تدمج بين الأداء الفائق والتصميم الجمالي المعاصر.</p>
+                    <p data-i18n="about_desc_3">أؤمن بأن البرمجة هي فن حل المشكلات؛ لذا أسعى دائماً لتوظيف أحدث التقنيات
+                        لابتكار حلول تقنية تذلل العقبات وتحقق قيمة مضافة لعملائنا.</p>
+                    <p class="highlight-p" data-i18n="about_highlight"
+                        style="color: var(--primary); font-weight: 700; margin-bottom: 30px;">إذا كنت تبحث عن شريك تقني
+                        يحول رؤيتك إلى واقع رقمي ملموس، فأنا هنا لخدمتك.</p>
+                    <div class="mini-stats">
+                        <div class="m-stat"><span class="en-font num" dir="ltr"><span class="counter"
+                                    data-target="10">0</span>+</span> <span data-i18n="stat_products">مشروعاً
+                                تقنياً متكاملاً</span></div>
+                        <div class="m-stat"><span class="en-font num" dir="ltr"><span class="counter"
+                                    data-target="100">0</span>%</span> <span data-i18n="stat_reliability">موثوقية وكفاءة
+                                تشغيلية</span></div>
+                    </div>
+                </div>
+
+                <!-- Tech Grid Block (Spans 4 cols) -->
+                <div class="bento-item bento-tech glass-card tilt-card" data-tilt data-tilt-max="2"
+                    data-tilt-speed="400">
+                    <h3 class="bento-title" style="margin-bottom: 10px;" data-i18n="tech_title">أدوات الريادة</h3>
+
+                    <div class="tech-grid-split"
+                        style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 20px;">
+                        <div class="tech-category mt-4">
+                            <h4 class="tech-cat-title" data-i18n="tech_cat_web">منصات الويب</h4>
+                            <div class="mini-tech-wrap en-font" style="margin-top: 10px;">
+                                <div class="t-badge"><i class="fa-brands fa-react" style="color:#61dafb"></i> React
+                                </div>
+                                <div class="t-badge"><i class="fa-brands fa-vuejs" style="color:#4fc08d"></i> Vue</div>
+                                <div class="t-badge"><i class="fa-brands fa-node-js" style="color:#68a063"></i> Node
+                                </div>
+                                <div class="t-badge"><i class="fa-brands fa-laravel" style="color:#ff2d20"></i> Laravel
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tech-category mt-4">
+                            <h4 class="tech-cat-title" data-i18n="tech_cat_app">تطبيقات الجوال</h4>
+                            <div class="mini-tech-wrap en-font" style="margin-top: 10px;">
+                                <div class="t-badge"><i class="fa-solid fa-mobile-screen" style="color:#4285F4"></i>
+                                    Flutter</div>
+                                <div class="t-badge"><i class="fa-brands fa-react" style="color:#61dafb"></i> R-Native
+                                </div>
+                                <div class="t-badge"><i class="fa-brands fa-swift" style="color:#F05138"></i> Swift
+                                </div>
+                                <div class="t-badge"><i class="fa-brands fa-android" style="color:#3DDC84"></i> Kotlin
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="tech-category mt-4">
+                            <h4 class="tech-cat-title" data-i18n="tech_cat_sys">أنظمة المؤسسات</h4>
+                            <div class="mini-tech-wrap en-font" style="margin-top: 10px;">
+                                <div class="t-badge"><i class="fa-solid fa-code" style="color:#512bd4"></i> .NET EXE
+                                </div>
+                                <div class="t-badge"><i class="fa-brands fa-python" style="color:#3776ab"></i>
+                                    Py-Desktop</div>
+                                <div class="t-badge"><i class="fa-solid fa-file-excel" style="color:#1D6F42"></i>
+                                    Excel-VBA</div>
+                                <div class="t-badge"><i class="fa-solid fa-chart-line" style="color:#F2C811"></i> Power
+                                    BI</div>
+                            </div>
+                        </div>
+
+                        <div class="tech-category mt-4">
+                            <h4 class="tech-cat-title" data-i18n="tech_cat_infra">البنية السحابية</h4>
+                            <div class="mini-tech-wrap en-font" style="margin-top: 10px;">
+                                <div class="t-badge"><i class="fa-brands fa-aws" style="color:#ff9900"></i> AWS</div>
+                                <div class="t-badge"><i class="fa-brands fa-docker" style="color:#2496ed"></i> Docker
+                                </div>
+                                <div class="t-badge"><i class="fa-solid fa-brain" style="color:#FFD700"></i> OpenAI
+                                </div>
+                                <div class="t-badge"><i class="fa-solid fa-database" style="color:#336791"></i> Postgres
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Contact Short Block (Hologram Style) -->
+                <div class="bento-item bento-contact glass-card tilt-card" data-tilt data-tilt-max="3"
+                    data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                    <div class="hologram-bg" style="background-image: url('images/dn.png');"></div>
+                    <div style="position: relative; z-index: 2;">
+                        <h3 class="bento-title" data-i18n="contact_title">الاستوديو</h3>
+                        <p class="en-font" data-i18n="contact_card_loc">Istanbul, Turkey</p>
+                        <a href="#contact" class="bento-link magnetic-item"><i class="fa-solid fa-arrow-left"></i></a>
+                    </div>
+                </div>
+
+                <!-- Timeline Short Block (Spans 3 cols) -->
+                <div class="bento-item bento-timeline glass-card tilt-card" data-tilt data-tilt-max="2"
+                    data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.05">
+                    <h3 class="bento-title" data-i18n="timeline_title">مسار الإنجاز التقني</h3>
+                    <div class="b-timeline">
+                        <div class="bt-item">
+                            <span class="bt-year en-font" data-i18n="timeline_current_year">2021 - الآن</span>
+                            <div class="bt-info" data-i18n="timeline_current_info">رحلة الإتقان والتدريب الذاتي المكثف
+                                في هندسة البرمجيات الحديثة</div>
+                        </div>
+                        <div class="bt-item">
+                            <span class="bt-year en-font" data-i18n="timeline_icdl_year">2018</span>
+                            <div class="bt-info" data-i18n="timeline_icdl_info">الحصول على الرخصة الدولية لقيادة الحاسوب
+                                (ICDL)</div>
+                        </div>
+                        <div class="bt-item">
+                            <span class="bt-year en-font" data-i18n="timeline_uni_year">2017 - 2018</span>
+                            <div class="bt-info" data-i18n="timeline_uni_info">دراسة علوم الحاسوب - الأسس الأكاديمية
+                                والمبادئ البرمجية (اليمن)</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- V7 Process Section (Full Bento Flow) -->
+    <section id="process" class="process">
+        <div class="container relative-z">
+            <div class="section-title-wrap text-center reveal blur-reveal">
+                <span class="kicker en-font" data-i18n="kicker_method">[ METHODOLOGY ]</span>
+                <h2 class="section-title" data-i18n="section_method">كيف نحول الفكرة لواقع <span>عالمي</span></h2>
+            </div>
+
+            <div class="bento-wrapper reveal blur-reveal delay-1">
+                <!-- Step 1 (Spans 2 cols) -->
+                <div class="bento-item process-bento glass-card magnetic-item tilt-card" data-tilt data-tilt-max="3"
+                    data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                    <div class="process-bento-num en-font">01</div>
+                    <div class="process-bento-content" style="position: relative; z-index: 1;">
+                        <div class="glass-icon-box">
+                            <i class="fa-solid fa-chess-knight gradient-icon"></i>
+                        </div>
+                        <h3 data-i18n="method_1_title">المعمارية الاستراتيجية</h3>
+                        <p data-i18n="method_1_desc">تحليل النطاق، تصميم قواعد البيانات (Database Architecture)، ورسم
+                            مسارات النظام بمنطق برمجي سليم.</p>
+                    </div>
+                </div>
+
+                <!-- Step 2 (Spans 2 cols) -->
+                <div class="bento-item process-bento glass-card magnetic-item tilt-card" data-tilt data-tilt-max="3"
+                    data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                    <div class="process-bento-num en-font">02</div>
+                    <div class="process-bento-content" style="position: relative; z-index: 1;">
+                        <div class="glass-icon-box">
+                            <i class="fa-solid fa-object-group gradient-icon"></i>
+                        </div>
+                        <h3 data-i18n="method_2_title">هندسة الواجهات والتجربة</h3>
+                        <p data-i18n="method_2_desc">بناء واجهات تفاعلية مذهلة تستهدف سلوك المستخدم لضمان أعلى معدلات
+                            التحويل (Conversion Rates).</p>
+                    </div>
+                </div>
+
+                <!-- Step 3 (Spans 2 cols) -->
+                <div class="bento-item process-bento glass-card magnetic-item tilt-card" data-tilt data-tilt-max="3"
+                    data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                    <div class="process-bento-num en-font">03</div>
+                    <div class="process-bento-content" style="position: relative; z-index: 1;">
+                        <div class="glass-icon-box">
+                            <i class="fa-solid fa-code gradient-icon"></i>
+                        </div>
+                        <h3 data-i18n="method_3_title">التطوير والبرمجة المتقدمة</h3>
+                        <p data-i18n="method_3_desc">كتابة أكواد برمجية قوية وقابلة للتوسع (Scalable) باستخدام أحدث
+                            إطارات العمل العصرية.</p>
+                    </div>
+                </div>
+
+                <!-- Step 4 (Spans 2 cols) -->
+                <div class="bento-item process-bento glass-card magnetic-item tilt-card" data-tilt data-tilt-max="3"
+                    data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
+                    <div class="process-bento-num en-font">04</div>
+                    <div class="process-bento-content" style="position: relative; z-index: 1;">
+                        <div class="glass-icon-box">
+                            <i class="fa-solid fa-cloud-arrow-up gradient-icon"></i>
+                        </div>
+                        <h3 data-i18n="method_4_title">السحابة والنشر (Cloud API)</h3>
+                        <p data-i18n="method_4_desc">النشر على الخدمات السحابية (AWS/GCP) ورفع التطبيقات على المتاجر
+                            الرسمية بأعلى درجات الأمان.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- V6/V7 Asymmetric Portfolio Section -->
+    <section id="portfolio" class="portfolio">
+        <div class="container relative-z">
+            <div class="section-title-wrap text-center reveal blur-reveal">
+                <span class="kicker en-font" data-i18n="kicker_portfolio">[ SELECTED WORKS ]</span>
+                <h2 class="section-title" data-i18n="section_portfolio">الأعمال <span>الاستثنائية</span></h2>
+            </div>
+
+            <div class="portfolio-dashboard reveal blur-reveal delay-1">
+                <div class="portfolio-controls">
+                    <div class="search-wrap">
+                        <i class="fa-solid fa-wand-magic-sparkles"></i>
+                        <input type="text" id="projectSearch" data-i18n-placeholder="search_placeholder"
+                            placeholder="ابحث عن مشروع أو تقنية...">
+                    </div>
+
+                    <div class="filters-wrap magnetic-item">
+                        <div class="filter-indicator"></div>
+                        <button class="filter-btn active" data-filter="all" data-i18n="filter_all">الكل</button>
+                        <button class="filter-btn" data-filter="web" data-i18n="filter_web">نظم ويب</button>
+                        <button class="filter-btn" data-filter="app" data-i18n="filter_app">تطبيقات ذكية</button>
+                        <button class="filter-btn" data-filter="sys" data-i18n="filter_sys">حلول مؤسسات</button>
+                    </div>
+                </div>
+
+                <div class="results-badge-wrap">
+                    <span class="results-count en-font">
+                        <span data-i18n="results_count_prefix">Showing</span>
+                        <span id="projectCounter">6</span>
+                        <span data-i18n="results_count_suffix">Projects</span>
+                    </span>
+                </div>
+            </div>
+
+            <div class="portfolio-bento-grid reveal blur-reveal delay-2" id="portfolio-grid-container">
+                <!-- Projects will be dynamically loaded here from projects.json -->
+            </div>
+
+            <div class="portfolio-controls reveal blur-reveal delay-1">
+                <div class="portfolio-progress-container">
+                    <div class="portfolio-progress-bar"></div>
+                </div>
+                <div class="swipe-indicator">
+                    <span data-i18n="swipe_cue">اسحب للمشاهدة</span> <i class="fa-solid fa-arrow-left-long"></i>
+                </div>
+            </div>
+
+            <!-- Dynamic UI State Templates (Hidden) -->
+            <div id="portfolio-loading" class="text-center"
+                style="display: none; padding: 40px; width: 100%; grid-column: 1 / -1;">
+                <i class="fa-solid fa-spinner fa-spin" style="font-size: 2rem; color: var(--primary);"></i>
+            </div>
+
+            <div id="portfolio-error" class="text-center"
+                style="display: none; padding: 40px; width: 100%; grid-column: 1 / -1;">
+                <p style="color: #ff5f56; font-size: 1.2rem;">حدث خطأ أثناء تحميل المشاريع.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Agency Footer -->
+    <footer id="contact" class="footer-v5">
+        <div class="footer-particles"></div>
+        <div class="container relative-z reveal blur-reveal">
+            <!-- 
+            <div class="footer-giant-text magnetic-item en-font" data-i18n="footer_giant">
+                <h2>لنعمل <span>معاً.</span></h2>
+            </div> -->
+
+            <div class="text-center mb-5">
+                <a href="mailto:hello@devnaji.com" class="btn btn-primary btn-large magnetic-item"><i
+                        class="fa-solid fa-envelope"></i>hello@devnaji.com</a>
+            </div>
+
+            <!-- V9 Elite Contact Form -->
+            <div class="contact-bento-form glass-card tilt-card" data-tilt data-tilt-max="2" data-tilt-speed="400"
+                data-tilt-glare data-tilt-max-glare="0.05">
+                <h3 class="bento-title" data-i18n="contact_title">ابدأ مشروعك الآن</h3>
+                <p data-i18n="contact_desc">دعنا نناقش كيف يمكننا تحويل أفكارك إلى منصة رقمية واقعية.</p>
+                <form class="pro-contact-form" id="contactForm" onsubmit="handleContactForm(event)">
+                    <p data-i18n="form_method"
+                        style="margin-bottom: 12px; font-weight: 700; color: var(--text-muted); font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px;">
+                        Preferred Contact Method</p>
+                    <div class="method-selector">
+                        <label class="method-option">
+                            <input type="radio" name="contact_method" value="email" checked>
+                            <div class="method-card">
+                                <i class="fa-solid fa-envelope"></i>
+                                <span data-i18n="method_email">Email</span>
+                            </div>
+                        </label>
+                        <label class="method-option">
+                            <input type="radio" name="contact_method" value="whatsapp">
+                            <div class="method-card">
+                                <i class="fa-brands fa-whatsapp"></i>
+                                <span data-i18n="method_whatsapp">WhatsApp</span>
+                            </div>
+                        </label>
+                    </div>
+
+                    <div class="input-group">
+                        <input type="text" id="form-name" placeholder="الاسم الكريم" data-i18n-placeholder="form_name"
+                            required>
+                        <input type="email" id="form-email" placeholder="البريد الإلكتروني"
+                            data-i18n-placeholder="form_email" required>
+                    </div>
+                    <div class="input-group">
+                        <input type="tel" id="form-phone" placeholder="رقم الهاتف (اختياري)"
+                            data-i18n-placeholder="form_phone" style="direction: ltr; text-align: left;">
+                    </div>
+                    <div class="input-group">
+                        <select id="form-type" required>
+                            <option value="" disabled selected data-i18n="form_type">نوع المشروع</option>
+                            <option value="web" data-i18n="filter_web">منصة ويب متكاملة</option>
+                            <option value="app" data-i18n="filter_app">تطبيق جوال</option>
+                            <option value="ui" data-i18n="filter_ui">هندسة واجهات (UI/UX)</option>
+                            <option value="other">استشارة تقنية / أخرى</option>
+                        </select>
+                    </div>
+                    <textarea id="form-msg" rows="4" placeholder="حدثني عن تفاصيل رؤيتك..."
+                        data-i18n-placeholder="form_msg" required></textarea>
+                    <button type="submit" class="btn btn-primary magnetic-item" id="submitBtn"
+                        style="width: 100%; border-radius: 16px; padding: 20px 0; font-size: 1.15rem; margin-top: 10px; border:none; outline:none; font-family: var(--font-ar); cursor: none;">
+                        <span data-i18n="form_btn">إرسال الطلب</span> <i class="fa-solid fa-paper-plane"
+                            style="margin-right:8px;"></i>
+                    </button>
+                </form>
+            </div>
+
+            <div class="footer-grid">
+                <div class="f-info">
+                    <a href="#home" class="logo text-logo en-font magnetic-item">Dev<span>Naji</span></a>
+                    <p data-i18n="footer_desc">أحوّل الأفكار المعقدة إلى تطبيقات ومواقع استثنائية. لا أكتب الأكواد
+                        البرمجية فحسب، بل أبني منتجات تقنية متكاملة تصنع الفارق للشركات والمؤسسات.</p>
+                </div>
+
+                <div class="f-social" style="text-align: left;">
+                    <div class="social-icons" style="justify-content: flex-end; flex-wrap: wrap; gap: 15px;">
+                        <a href="https://wa.me/905355255446" class="magnetic-item" title="WhatsApp"><i
+                                class="fa-brands fa-whatsapp"></i></a>
+                        <a href="https://x.com/dev_naji" class="magnetic-item" title="Twitter"><i
+                                class="fa-brands fa-x-twitter"></i></a>
+                        <a href="https://www.instagram.com/dev.naji/" class="magnetic-item" title="Instagram"><i
+                                class="fa-brands fa-instagram"></i></a>
+                        <a href="https://www.facebook.com/profile.php?id=100079937750350" class="magnetic-item"
+                            title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+                        <a href="https://www.linkedin.com/in/ahmed-al-ghanmi-31b21b3b9/" class="magnetic-item"
+                            title="LinkedIn"><i class="fa-brands fa-linkedin-in"></i></a>
+                        <a href="https://github.com/Ahmed-AL-Ghanmi" class="magnetic-item" title="GitHub"><i
+                                class="fa-brands fa-github"></i></a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2025 <span data-i18n="footer_rights">جميع الحقوق محفوظة لأحمد الغانمي</span></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scroll top removed as per request for cleaner layout -->
+
+    <!-- Mobile Social FAB (Left Side) -->
+    <div class="social-fab-wrap mobile-only">
+        <div class="social-fab-menu">
+            <a href="https://wa.me/905355255446" class="magnetic-item" title="WhatsApp"><i
+                    class="fa-brands fa-whatsapp gradient-icon"></i></a>
+            <a href="https://x.com/dev_naji" class="magnetic-item" title="Twitter"><i
+                    class="fa-brands fa-x-twitter gradient-icon"></i></a>
+            <a href="https://www.instagram.com/dev.naji/" class="magnetic-item" title="Instagram"><i
+                    class="fa-brands fa-instagram gradient-icon"></i></a>
+            <a href="https://www.facebook.com/profile.php?id=100079937750350" class="magnetic-item" title="Facebook"><i
+                    class="fa-brands fa-facebook-f"></i></a>
+            <a href="https://www.linkedin.com/in/ahmed-al-ghanmi-31b21b3b9/" class="magnetic-item" title="LinkedIn"><i
+                    class="fa-brands fa-linkedin-in"></i></a>
+            <a href="https://github.com/Ahmed-AL-Ghanmi" class="magnetic-item" title="GitHub"><i
+                    class="fa-brands fa-github"></i></a>
+        </div>
+        <button class="social-fab-btn magnetic-item" title="Socials">
+            <i class="fa-solid fa-share-nodes"></i>
+        </button>
+    </div>
+
+    <!-- ===== SUCCESS MODAL ===== -->
+    <div id="successModal" class="success-modal-overlay" style="display:none;" role="dialog" aria-modal="true"
+        aria-labelledby="successTitle" aria-describedby="successDesc">
+        <div class="success-modal-box">
+            <div class="success-icon-wrap">
+                <div class="success-ring"></div>
+                <i class="fa-solid fa-check success-check" aria-hidden="true"></i>
+            </div>
+            <h3 class="success-title" id="successTitle">تم الإرسال بنجاح!</h3>
+            <p class="success-desc" id="successDesc">شكراً لك، سيتم التواصل معك قريباً.</p>
+            <button class="btn btn-primary success-close-btn" onclick="closeSuccessModal()" aria-label="إغلاق">
+                <span id="successCloseText">حسناً، شكراً!</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- ===== LIVE CHAT WIDGET ===== -->
+    <div id="chat-widget" class="chat-widget" role="complementary" aria-label="Live Chat">
+        <!-- Chat Bubble Button -->
+        <button class="chat-bubble-btn" id="chatToggleBtn" aria-label="Open Chat" aria-expanded="false">
+            <div class="chat-bubble-icon">
+                <i class="fa-solid fa-comment-dots chat-icon-open" aria-hidden="true"></i>
+                <i class="fa-solid fa-xmark chat-icon-close" aria-hidden="true"></i>
+            </div>
+            <div class="chat-bubble-pulse"></div>
+            <div class="chat-bubble-badge" id="chatBadge">1</div>
+        </button>
+
+        <!-- Chat Panel -->
+        <div class="chat-panel glass-card" id="chatPanel" role="dialog" aria-modal="true"
+            aria-labelledby="chatPanelTitle">
+            <!-- Header -->
+            <div class="chat-panel-header">
+                <div class="chat-header-avatar">
+                    <img src="images/dn.png" alt="Ahmed Al-Ghanmi" loading="lazy">
+                    <span class="chat-online-dot" title="Online"></span>
+                </div>
+                <div class="chat-header-info">
+                    <h3 class="chat-header-name" id="chatPanelTitle">Ahmed Al-Ghanmi</h3>
+                    <span class="chat-header-status" data-i18n="chat_status">متاح الآن · رد خلال دقائق</span>
+                </div>
+                <button class="chat-close-btn" id="chatCloseBtn" aria-label="Close Chat">
+                    <i class="fa-solid fa-xmark"></i>
+                </button>
+            </div>
+
+            <!-- Body: Welcome Screen -->
+            <div class="chat-body" id="chatBody">
+                <!-- Welcome State -->
+                <div class="chat-welcome" id="chatWelcome">
+                    <div class="chat-welcome-icon">
+                        <i class="fa-solid fa-bolt-lightning"></i>
+                    </div>
+                    <h4 data-i18n="chat_welcome_title">أهلاً! كيف يمكنني مساعدتك؟</h4>
+                    <p data-i18n="chat_welcome_desc">اختر إحدى الطرق أدناه للبدء — سأرد عليك في أقرب وقت.</p>
+
+                    <!-- Quick Actions -->
+                    <div class="chat-quick-actions">
+                        <button class="chat-quick-btn" id="chatQuickProject" data-i18n="chat_quick_project">
+                            <i class="fa-solid fa-rocket"></i> مناقشة مشروع جديد
+                        </button>
+                        <button class="chat-quick-btn" id="chatQuickPrice" data-i18n="chat_quick_price">
+                            <i class="fa-solid fa-tag"></i> الاستفسار عن الأسعار
+                        </button>
+                        <button class="chat-quick-btn" id="chatQuickOther" data-i18n="chat_quick_other">
+                            <i class="fa-solid fa-circle-question"></i> سؤال آخر
+                        </button>
+                    </div>
+                </div>
+
+                <!-- Form State (hidden by default) -->
+                <div class="chat-form-state" id="chatFormState" style="display:none;">
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- Bot greeting message will be injected here -->
+                    </div>
+                    <div class="chat-input-area">
+                        <input type="text" id="chatNameInput" class="chat-input"
+                            data-i18n-placeholder="chat_name_placeholder" placeholder="اسمك الكريم..." maxlength="60">
+                        <input type="text" id="chatMessageInput" class="chat-input"
+                            data-i18n-placeholder="chat_msg_placeholder" placeholder="اكتب رسالتك..." maxlength="500"
+                            style="display:none;">
+                        <div class="chat-send-row">
+                            <button class="chat-send-btn" id="chatSendNameBtn" data-i18n="chat_next">التالي</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Channel Picker (hidden by default) -->
+                <div class="chat-channel-state" id="chatChannelState" style="display:none;">
+                    <div class="chat-messages" id="chatChannelMessages"></div>
+                    <div class="chat-channel-options">
+                        <button class="chat-channel-btn whatsapp" id="chatSendWA">
+                            <i class="fa-brands fa-whatsapp"></i>
+                            <span data-i18n="chat_via_wa">أرسل عبر WhatsApp</span>
+                        </button>
+                        <button class="chat-channel-btn email" id="chatSendEmail">
+                            <i class="fa-solid fa-envelope"></i>
+                            <span data-i18n="chat_via_email">أرسل عبر البريد</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Footer -->
+            <div class="chat-panel-footer">
+                <i class="fa-solid fa-shield-halved"></i>
+                <span data-i18n="chat_footer_note">محادثة آمنة ومشفرة · DevNaji © 2025</span>
+            </div>
+        </div>
+    </div>
+    <!-- ===== END CHAT WIDGET ===== -->
+
+    <!-- JS Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js" defer></script>
+    <script src="js/translations.js?v=28.0"></script>
+    <script src="projects.js?v=28.0"></script>
+    <script src="js/script.js?v=28.0"></script>
+    <script src="js/chat.js?v=28.0"></script>
+
+</body>
+
+</html>
