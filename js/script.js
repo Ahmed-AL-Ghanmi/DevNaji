@@ -50,10 +50,12 @@ document.addEventListener('DOMContentLoaded', () => {
         document.documentElement.lang = lang;
         document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
         
-        // Update All Buttons UI (Desktop & Mobile)
+        // Update All Buttons UI
         document.querySelectorAll('.lang-btn').forEach(btn => {
             btn.classList.toggle('active', btn.getAttribute('data-lang') === lang);
         });
+        const activeLangText = document.getElementById('activeLangText');
+        if (activeLangText) activeLangText.textContent = lang.toUpperCase();
 
         // Update Static Text
         document.querySelectorAll('[data-i18n]').forEach(el => {
@@ -101,24 +103,21 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial load will be called at the bottom
 
-    // Mobile Lang Dropdown Toggle
-    const mobileSwitcher = document.querySelector('.mobile-lang-switcher');
-    if (mobileSwitcher) {
-        mobileSwitcher.addEventListener('click', (e) => {
-            // Only toggle if we are NOT clicking an active language button (to allow selection)
-            // Wait, actually clicking the switcher itself or any button should toggle the open state
-            // But if it's open, clicking a button should select it and then close.
-            if (mobileSwitcher.classList.contains('open') && e.target.classList.contains('lang-btn')) {
-                // Let the button listener handle it
-                mobileSwitcher.classList.remove('open');
-            } else {
-                mobileSwitcher.classList.toggle('open');
-                e.stopPropagation();
-            }
+    // Lang Dropdown Toggle
+    const langDropdown = document.getElementById('langDropdown');
+    const langDropdownActive = document.getElementById('langDropdownActive');
+    if (langDropdown && langDropdownActive) {
+        langDropdownActive.addEventListener('click', (e) => {
+            langDropdown.classList.toggle('open');
+            e.stopPropagation();
         });
-        
         document.addEventListener('click', () => {
-            mobileSwitcher.classList.remove('open');
+            langDropdown.classList.remove('open');
+        });
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                langDropdown.classList.remove('open');
+            });
         });
     }
 
@@ -140,8 +139,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const header = document.querySelector('header');
     const progressBar = document.querySelector('.top-scroll-progress');
-    const scrollBtn = document.querySelector('.circle-btn-wrap.fixed-scroll');
-    const circleProgress = document.querySelector('.circle-progress');
+    const scrollTopBtn = document.getElementById('scrollTopBtn');
+    const scrollRingFill = document.getElementById('scrollRingFill');
 
     window.addEventListener('scroll', () => {
         const scrollY = window.scrollY;
@@ -156,26 +155,42 @@ document.addEventListener('DOMContentLoaded', () => {
         const progress = totalHeight > 0 ? (scrollY / totalHeight) * 100 : 0;
         if (progressBar) progressBar.style.width = scrollY > 0 ? `${progress}%` : '0';
 
+        // Mobile Bottom Nav — Active section highlight on scroll
+        if (window.innerWidth <= 768) {
+            const sections = ['home', 'bento-master', 'process', 'services', 'portfolio', 'contact'];
+            const navItems = document.querySelectorAll('.bottom-nav-item');
+            let currentSection = 'home';
+            for (const id of sections) {
+                const el = document.getElementById(id);
+                if (el && el.getBoundingClientRect().top <= 150) currentSection = id;
+            }
+            navItems.forEach(item => {
+                item.classList.toggle('active', item.getAttribute('data-section') === currentSection);
+            });
+        }
+
+        // Portfolio horizontal scroll progress bar
+        const grid = document.getElementById('portfolio-grid-container');
+        const pBar = document.querySelector('.portfolio-progress-bar');
+        if (grid && pBar) {
+            const maxScroll = grid.scrollWidth - grid.clientWidth;
+            const pct = maxScroll > 0 ? (grid.scrollLeft / maxScroll) * 100 : 0;
+            pBar.style.width = pct + '%';
+        }
+
+
         // Scroll to top button circle progress
-        if (scrollBtn && circleProgress) {
+        if (scrollTopBtn && scrollRingFill) {
             if (scrollY > 300) {
-                scrollBtn.classList.add('visible');
-                scrollBtn.style.opacity = '1';
-                scrollBtn.style.visibility = 'visible';
-                const offset = 301.59 - (progress / 100) * 301.59;
-                circleProgress.style.strokeDashoffset = offset;
+                scrollTopBtn.classList.add('visible');
+                // The new SVG has a dasharray of 150.8
+                const offset = 150.8 - (progress / 100) * 150.8;
+                scrollRingFill.style.strokeDashoffset = offset;
             } else {
-                scrollBtn.style.opacity = '0';
-                scrollBtn.style.visibility = 'hidden';
+                scrollTopBtn.classList.remove('visible');
             }
         }
     });
-
-    if (scrollBtn) {
-        scrollBtn.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        });
-    }
 
     /* --- Custom Cursor --- */
     const cursorDot = document.querySelector('.cursor-dot');
@@ -450,9 +465,24 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // --- Final Initialization ---
     setLanguage(currentLang);
+    window.loadProjects = loadProjects; // Expose for lang switch
     loadProjects();
     window.addEventListener('resize', initFilter);
     setTimeout(initFilter, 500); // Guard for late layout
+
+    /* --- Lenis Smooth Scroll Init --- */
+    if (typeof Lenis !== 'undefined') {
+        const lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smoothWheel: true,
+        });
+        function lenisRaf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(lenisRaf);
+        }
+        requestAnimationFrame(lenisRaf);
+    }
 
     /* --- V28 Mouse Drag to Scroll (Desktop) --- */
     let isDown = false;
@@ -500,23 +530,41 @@ document.addEventListener('DOMContentLoaded', () => {
         btn.addEventListener('click', () => {
             filterBtns.forEach(b => b.classList.remove('active'));
             btn.classList.add('active');
-            updateIndicator(btn);
+            window.updateIndicator(btn);
             currentFilter = btn.getAttribute('data-filter');
             applyFilter();
         });
     });
 
+    // Portfolio horizontal scroll → progress bar
+    if (gridContainer) {
+        gridContainer.addEventListener('scroll', () => {
+            const pBar = document.querySelector('.portfolio-progress-bar');
+            if (!pBar) return;
+            const maxScroll = gridContainer.scrollWidth - gridContainer.clientWidth;
+            const pct = maxScroll > 0 ? (gridContainer.scrollLeft / maxScroll) * 100 : 0;
+            pBar.style.width = pct + '%';
+        });
+    }
+
 });
 
 /**
- * Global Contact Form Handler — v3 (FormSubmit + WhatsApp)
- * - Email → hello@devnaji.com via FormSubmit.co (free, no account needed)
- * - WhatsApp → Opens in new tab silently, user stays on site
- * - Shows premium success modal after both actions
+ * Global Contact Form Handler — v5 (Web3Forms + WhatsApp)
+ * ═══════════════════════════════════════════════════════
+ * ✅ إعداد سريع — خطوة واحدة فقط!
+ *    1. اذهب إلى: https://web3forms.com
+ *    2. أدخل إيميلك hello@devnaji.com واضغط "Create Access Key"
+ *    3. ستصلك رسالة تأكيد — انقر "Confirm" فيها
+ *    4. انسخ الـ Access Key وضعه أدناه في WEB3FORMS_KEY
  *
- * FIRST TIME ONLY: FormSubmit will send a one-time verification email
- * to hello@devnaji.com — just click "Confirm Email" in that email.
+ *  💡 مجاني حتى 250 رسالة/شهر | لا حساب | لا إعداد معقد
+ * ═══════════════════════════════════════════════════════
  */
+
+// ─── ضع مفتاحك هنا (خطوة واحدة فقط) ───────────────────
+const WEB3FORMS_KEY   = '477c15ca-fe8b-4efe-a5ee-f531c0171185'; // ✅ Web3Forms Active
+// ────────────────────────────────────────────────────────
 const WHATSAPP_NUMBER = '905355255446';
 const CONTACT_EMAIL   = 'hello@devnaji.com';
 
@@ -535,21 +583,17 @@ window.handleContactForm = function(e) {
 
     // --- Validation ---
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    
-    if (!name) return alert(t.error_name || 'Name required');
-    if (!emailRegex.test(email)) return alert(t.error_email || 'Valid email required');
-    if (!msg) return alert(t.error_msg || 'Message required');
+    if (!name)                  return alert(t.error_name  || 'يرجى إدخال الاسم');
+    if (!emailRegex.test(email)) return alert(t.error_email || 'يرجى إدخال بريد صحيح');
+    if (!msg)                   return alert(t.error_msg   || 'يرجى كتابة رسالتك');
 
     // --- Button Loading State ---
     const btn = document.getElementById('submitBtn');
     const originalHTML = btn.innerHTML;
     btn.disabled = true;
-    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin" style="margin-left:8px;"></i>';
+    btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i>';
 
-    const done = () => {
-        btn.disabled  = false;
-        btn.innerHTML = originalHTML;
-    };
+    const done = () => { btn.disabled = false; btn.innerHTML = originalHTML; };
 
     const showSuccess = () => {
         document.getElementById('successTitle').textContent     = t.success_title || 'تم الإرسال بنجاح! ✅';
@@ -562,47 +606,59 @@ window.handleContactForm = function(e) {
         done();
     };
 
+    // ── WhatsApp ──────────────────────────────────────────
     if (method === 'whatsapp') {
         const phoneInfo = phone ? `\n• الهاتف: ${phone}` : '';
-        const waText = `*[ طلب مشروع جديد - DevNaji ]*\n──────────────────\n• الاسم: ${name}\n• البريد: ${email}${phoneInfo}\n• نوع المشروع: ${type}\n──────────────────\n${msg}`.trim();
-        const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`;
-        const tab = window.open(url, '_blank');
+        const waText = `*[ DevNaji — طلب جديد ]*\n────────────────\n• الاسم: ${name}\n• البريد: ${email}${phoneInfo}\n• النوع: ${type}\n────────────────\n${msg}`.trim();
+        const tab = window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(waText)}`, '_blank');
         if (tab) tab.focus();
         showSuccess();
-
-    } else {
-        const phoneLabel = phone || 'لم يُدخل';
-        const formData = new FormData();
-        formData.append('name',         name);
-        formData.append('email',        email);
-        formData.append('_replyto',     email);
-        formData.append('phone',        phoneLabel);
-        formData.append('project_type', type);
-        formData.append('message',      msg);
-        formData.append('_subject',     `[ DevNaji ] طلب مشروع جديد - ${type} من ${name}`);
-        formData.append('_captcha',     'false');
-        formData.append('_template',    'table');
-
-        const timeout = new Promise((_, reject) =>
-            setTimeout(() => reject(new Error('timeout')), 10000)
-        );
-
-        Promise.race([
-            fetch(`https://formsubmit.co/ajax/${CONTACT_EMAIL}`, {
-                method: 'POST',
-                headers: { 'Accept': 'application/json' },
-                body: formData
-            }).then(res => res.json()),
-            timeout
-        ])
-        .then(() => {
-            showSuccess();
-        })
-        .catch(() => {
-            showSuccess();
-        });
+        return;
     }
+
+    // ── Email via Web3Forms ────────────────────────────────
+    if (WEB3FORMS_KEY === 'YOUR_ACCESS_KEY_HERE') {
+        // لم يُضبط المفتاح بعد — افتح تطبيق الإيميل كبديل مؤقت
+        const subject = encodeURIComponent(`[ DevNaji ] طلب مشروع من ${name}`);
+        const body    = encodeURIComponent(`الاسم: ${name}\nالبريد: ${email}\nالهاتف: ${phone || '—'}\nنوع المشروع: ${type}\n\n${msg}`);
+        window.open(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`, '_blank');
+        showSuccess();
+        return;
+    }
+
+    fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        body: JSON.stringify({
+            access_key:   WEB3FORMS_KEY,
+            name:         name,
+            email:        email,
+            phone:        phone || '—',
+            project_type: type,
+            message:      msg,
+            subject:      `[ DevNaji ] طلب مشروع جديد — ${type} — من ${name}`,
+            from_name:    'DevNaji Portfolio',
+            redirect:     false,
+        })
+    })
+    .then(res => res.json())
+    .then(data => {
+        if (data.success) {
+            showSuccess();
+        } else {
+            throw new Error(data.message || 'فشل الإرسال');
+        }
+    })
+    .catch(err => {
+        console.error('Web3Forms error:', err);
+        // Fallback: open email client
+        const subject = encodeURIComponent(`[ DevNaji ] طلب مشروع من ${name}`);
+        const body    = encodeURIComponent(`الاسم: ${name}\nالبريد: ${email}\nالهاتف: ${phone || '—'}\nنوع المشروع: ${type}\n\n${msg}`);
+        window.open(`mailto:${CONTACT_EMAIL}?subject=${subject}&body=${body}`, '_blank');
+        showSuccess();
+    });
 };
+
 
 /** Close the success modal */
 window.closeSuccessModal = function() {

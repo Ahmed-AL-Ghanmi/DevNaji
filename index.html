@@ -6,31 +6,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <!-- ====== SEO ====== -->
-    <title>DevNaji | Portfolio</title>
+    <title>DevNaji | Portfolio — Ahmed Al-Ghanmi Software Engineer</title>
     <meta name="description"
         content="Ahmed Al-Ghanmi (DevNaji) — Software Engineer specializing in full-stack web apps, mobile applications, and enterprise systems. Based in Istanbul, Turkey.">
     <meta name="keywords"
-        content="DevNaji, Ahmed Al-Ghanmi, Software Engineer, Web Development, Full Stack, Mobile Apps, Istanbul">
+        content="DevNaji, Ahmed Al-Ghanmi, Software Engineer, Web Development, Full Stack, Mobile Apps, Istanbul, Turkey, React, Node.js, Laravel, Flutter">
     <meta name="author" content="Ahmed Al-Ghanmi - DevNaji">
     <meta name="robots" content="index, follow">
+    <link rel="canonical" href="https://devnaji.com/">
+
+    <!-- ====== OPEN GRAPH (Social Sharing) ====== -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://devnaji.com/">
+    <meta property="og:title" content="DevNaji | Ahmed Al-Ghanmi — Software Engineer">
+    <meta property="og:description" content="Software Engineer specializing in full-stack web apps, mobile applications, and enterprise systems. Based in Istanbul, Turkey.">
+    <meta property="og:image" content="https://devnaji.com/images/devnaji-portfolio.png">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:locale" content="ar_YE">
+    <meta property="og:site_name" content="DevNaji Portfolio">
+
+    <!-- ====== TWITTER CARD ====== -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:site" content="@dev_naji">
+    <meta name="twitter:creator" content="@dev_naji">
+    <meta name="twitter:title" content="DevNaji | Ahmed Al-Ghanmi — Software Engineer">
+    <meta name="twitter:description" content="Software Engineer specializing in full-stack web apps, mobile apps, and enterprise systems. Istanbul, Turkey.">
+    <meta name="twitter:image" content="https://devnaji.com/images/devnaji-portfolio.png">
 
     <!-- ====== SECURITY ====== -->
     <meta http-equiv="X-Content-Type-Options" content="nosniff">
     <meta http-equiv="Referrer-Policy" content="strict-origin-when-cross-origin">
     <meta http-equiv="Permissions-Policy" content="geolocation=(), microphone=(), camera=()">
     <meta http-equiv="Content-Security-Policy"
-        content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net https://formsubmit.co; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://formsubmit.co https://wa.me;">
+        content="default-src 'self' https:; script-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: https:; connect-src 'self' https://api.web3forms.com https://wa.me;">
 
     <!-- ====== ICONS & THEME ====== -->
     <link rel="icon" href="images/logo.png" type="image/png">
     <link rel="apple-touch-icon" href="images/logo.png">
     <meta name="theme-color" content="#020205">
 
-    <!-- ====== PERFORMANCE: Preconnect ====== -->
+    <!-- ====== PERFORMANCE: Preconnect & Preload ====== -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="preconnect" href="https://cdnjs.cloudflare.com">
-    <link rel="preconnect" href="https://formsubmit.co">
+    <link rel="preconnect" href="https://api.web3forms.com">
+    <!-- LCP Preload: hero image -->
+    <link rel="preload" as="image" href="images/dn.png" fetchpriority="high">
 
     <!-- Fonts -->
     <link
@@ -39,7 +61,7 @@
     <!-- FontAwesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=27.0">
+    <link rel="stylesheet" href="css/style.css?v=32.0">
 
     <!-- ====== HIGH-PRIORITY: Language Init (must run before render) ====== -->
     <script>
@@ -108,20 +130,21 @@
                 <a href="#home" class="nav-link active" data-i18n="nav_home">الرئيسية</a>
                 <a href="#bento-master" class="nav-link" data-i18n="nav_about">من أنا</a>
                 <a href="#process" class="nav-link" data-i18n="nav_method">آلية العمل</a>
+                <a href="#services" class="nav-link" data-i18n="kicker_services">خدماتنا</a>
                 <a href="#portfolio" class="nav-link" data-i18n="nav_portfolio">معرض الأعمال</a>
                 <a href="#contact" class="nav-link" data-i18n="nav_contact">تواصل معي</a>
             </nav>
 
             <div class="header-actions">
-                <div class="lang-switcher desktop-lang-switcher">
-                    <button class="lang-btn active" data-lang="ar">AR</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="tr">TR</button>
-                </div>
-                <div class="lang-switcher mobile-lang-switcher">
-                    <button class="lang-btn active" data-lang="ar">AR</button>
-                    <button class="lang-btn" data-lang="en">EN</button>
-                    <button class="lang-btn" data-lang="tr">TR</button>
+                <div class="lang-dropdown" id="langDropdown">
+                    <button class="lang-dropdown-active" id="langDropdownActive">
+                        <span id="activeLangText">AR</span> <i class="fa-solid fa-chevron-down"></i>
+                    </button>
+                    <div class="lang-dropdown-menu">
+                        <button class="lang-btn active" data-lang="ar">AR</button>
+                        <button class="lang-btn" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="tr">TR</button>
+                    </div>
                 </div>
                 <div class="hamburger magnetic-item">
                     <div class="line"></div>
@@ -145,17 +168,17 @@
         <div class="hero-side-social reveal blur-reveal delay-3">
             <span class="social-text">Follow Me</span>
             <div class="social-line"></div>
-            <a href="https://wa.me/905355255446" class="magnetic-item" title="WhatsApp"><i
+            <a href="https://wa.me/905355255446" class="magnetic-item" title="WhatsApp" target="_blank" rel="noopener noreferrer"><i
                     class="fa-brands fa-whatsapp"></i></a>
-            <a href="https://x.com/dev_naji" class="magnetic-item" title="Twitter"><i
+            <a href="https://x.com/dev_naji" class="magnetic-item" title="Twitter" target="_blank" rel="noopener noreferrer"><i
                     class="fa-brands fa-x-twitter"></i></a>
-            <a href="https://www.instagram.com/dev.naji/" class="magnetic-item" title="Instagram"><i
+            <a href="https://www.instagram.com/dev.naji/" class="magnetic-item" title="Instagram" target="_blank" rel="noopener noreferrer"><i
                     class="fa-brands fa-instagram"></i></a>
-            <a href="https://www.facebook.com/profile.php?id=100079937750350" class="magnetic-item" title="Facebook"><i
+            <a href="https://www.facebook.com/profile.php?id=100079937750350" class="magnetic-item" title="Facebook" target="_blank" rel="noopener noreferrer"><i
                     class="fa-brands fa-facebook-f"></i></a>
-            <a href="https://www.linkedin.com/in/ahmed-al-ghanmi-31b21b3b9/" class="magnetic-item" title="LinkedIn"><i
+            <a href="https://www.linkedin.com/in/ahmed-al-ghanmi-31b21b3b9/" class="magnetic-item" title="LinkedIn" target="_blank" rel="noopener noreferrer"><i
                     class="fa-brands fa-linkedin-in"></i></a>
-            <a href="https://github.com/Ahmed-AL-Ghanmi" class="magnetic-item" title="GitHub"><i
+            <a href="https://github.com/Ahmed-AL-Ghanmi" class="magnetic-item" title="GitHub" target="_blank" rel="noopener noreferrer"><i
                     class="fa-brands fa-github"></i></a>
         </div>
 
@@ -170,21 +193,24 @@
                         <span class="bio-name" data-i18n="hero_name">أنا أحمد الغانمي</span>
                     </div>
                     <div class="bio-avatar">
-                        <img src="images/dn1.png" alt="Ahmed Al-Ghanmi - DevNaji Software Engineer" loading="eager"
+                        <img src="images/dn.png" alt="Ahmed Al-Ghanmi - DevNaji Software Engineer" loading="eager"
                             fetchpriority="high">
                     </div>
                 </div>
 
-                <h2 class="ar-title typed-title">
+                <h1 class="ar-title typed-title">
                     <span class="typed-text en-font"></span><span class="cursor-type"></span>
-                </h2>
+                </h1>
                 <p class="hero-sub" data-i18n="hero_sub" style="font-size: 1.3rem; margin-bottom: 45px;">من الهندسة
                     المعمارية للنظام إلى البرمجة الدقيقة. أقدم حلولاً برمجية متطورة للشركات الناشئة والمؤسسات الطموحة.
                 </p>
 
-                <div class="hero-buttons-side">
-                    <a href="#portfolio" class="btn btn-primary btn-large magnetic-item" data-i18n="hero_btn">استكشف
-                        أعمالي <i class="fa-solid fa-arrow-left"></i></a>
+                <!-- Hero Action Buttons -->
+                <div class="hero-cta-group" style="justify-content: center; width: 100%;">
+                    <a href="#portfolio" class="btn btn-primary btn-large hero-cta-main magnetic-item"
+                        data-i18n="hero_btn" style="width: 100%; max-width: 320px;">
+                        استكشف أعمالي <i class="fa-solid fa-arrow-left btn-arrow-icon"></i>
+                    </a>
                 </div>
             </div>
 
@@ -215,7 +241,7 @@
 {
   <span class="c-red">"name"</span>: <span class="c-green">"DevNaji"</span>,
   <span class="c-red">"title"</span>: <span class="c-green">"System Architect"</span>,
-  <span class="c-red">"location"</span>: <span class="c-green">"Yemen"</span>,
+  <span class="c-red">"location"</span>: <span class="c-green">"Istanbul, Turkey"</span>,
   <span class="c-red">"experience"</span>: <span class="c-yellow">5</span>,
   <span class="c-red">"available"</span>: <span class="c-yellow">true</span>
 }
@@ -364,7 +390,7 @@
                     data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.1">
                     <div class="hologram-bg" style="background-image: url('images/dn.png');"></div>
                     <div style="position: relative; z-index: 2;">
-                        <h3 class="bento-title" data-i18n="contact_title">الاستوديو</h3>
+                        <h3 class="bento-title" data-i18n="contact_card_title">الاستوديو</h3>
                         <p class="en-font" data-i18n="contact_card_loc">Istanbul, Turkey</p>
                         <a href="#contact" class="bento-link magnetic-item"><i class="fa-solid fa-arrow-left"></i></a>
                     </div>
@@ -459,6 +485,70 @@
                         <p data-i18n="method_4_desc">النشر على الخدمات السحابية (AWS/GCP) ورفع التطبيقات على المتاجر
                             الرسمية بأعلى درجات الأمان.</p>
                     </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== V8 SERVICES SECTION ===== -->
+    <section id="services" class="services-section">
+        <div class="container relative-z">
+            <div class="section-title-wrap text-center reveal blur-reveal">
+                <span class="kicker en-font" data-i18n="kicker_services">[ SERVICES ]</span>
+                <h2 class="section-title" data-i18n="section_services">خدمات <span>بمعايير عالمية</span></h2>
+            </div>
+
+            <div class="services-grid reveal blur-reveal delay-1">
+                <!-- Service 1 -->
+                <div class="service-card glass-card tilt-card" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                    <div class="service-icon-wrap">
+                        <i class="fa-solid fa-globe gradient-icon"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="srv_web_title">تطوير مواقع ومنصات ويب</h3>
+                    <p class="service-desc" data-i18n="srv_web_desc">بناء مواقع ومنصات ويب احترافية باستخدام أحدث التقنيات وأفضل معايير الأداء والتصميم.</p>
+                    <div class="service-tags en-font">
+                        <span>React.js</span><span>Next.js</span><span>Laravel</span><span>Node.js</span>
+                    </div>
+                    <a href="#contact" class="service-cta" data-i18n="srv_cta">ابدأ مشروعك <i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+
+                <!-- Service 2 -->
+                <div class="service-card glass-card tilt-card" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                    <div class="service-icon-wrap">
+                        <i class="fa-solid fa-mobile-screen-button gradient-icon"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="srv_app_title">تطوير تطبيقات الجوال</h3>
+                    <p class="service-desc" data-i18n="srv_app_desc">تصميم وتطوير تطبيقات متعددة المنصات (iOS و Android) بأداء عالي وتجربة مستخدم استثنائية.</p>
+                    <div class="service-tags en-font">
+                        <span>Flutter</span><span>React Native</span><span>Swift</span><span>Kotlin</span>
+                    </div>
+                    <a href="#contact" class="service-cta" data-i18n="srv_cta">ابدأ مشروعك <i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+
+                <!-- Service 3 -->
+                <div class="service-card glass-card tilt-card" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                    <div class="service-icon-wrap">
+                        <i class="fa-solid fa-server gradient-icon"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="srv_sys_title">أنظمة مؤسسية ولوحات تحكم</h3>
+                    <p class="service-desc" data-i18n="srv_sys_desc">تطوير أنظمة إدارية متكاملة (ERP/CRM) ولوحات تحكم ذكية وقواعد بيانات عالية الأداء للشركات والمؤسسات.</p>
+                    <div class="service-tags en-font">
+                        <span>PHP/SQL</span><span>.NET</span><span>Python</span><span>Power BI</span>
+                    </div>
+                    <a href="#contact" class="service-cta" data-i18n="srv_cta">ابدأ مشروعك <i class="fa-solid fa-arrow-left"></i></a>
+                </div>
+
+                <!-- Service 4 -->
+                <div class="service-card glass-card tilt-card" data-tilt data-tilt-max="3" data-tilt-speed="400">
+                    <div class="service-icon-wrap">
+                        <i class="fa-solid fa-pen-ruler gradient-icon"></i>
+                    </div>
+                    <h3 class="service-title" data-i18n="srv_ui_title">تصميم واجهات UI/UX</h3>
+                    <p class="service-desc" data-i18n="srv_ui_desc">تصميم واجهات بصرية مذهلة تجمع بين الجمال وسهولة الاستخدام وتحقق أعلى معدلات التحويل.</p>
+                    <div class="service-tags en-font">
+                        <span>Figma</span><span>Prototyping</span><span>CSS Elite</span>
+                    </div>
+                    <a href="#contact" class="service-cta" data-i18n="srv_cta">ابدأ مشروعك <i class="fa-solid fa-arrow-left"></i></a>
                 </div>
             </div>
         </div>
@@ -577,10 +667,10 @@
                     <div class="input-group">
                         <select id="form-type" required>
                             <option value="" disabled selected data-i18n="form_type">نوع المشروع</option>
-                            <option value="web" data-i18n="filter_web">منصة ويب متكاملة</option>
-                            <option value="app" data-i18n="filter_app">تطبيق جوال</option>
-                            <option value="ui" data-i18n="filter_ui">هندسة واجهات (UI/UX)</option>
-                            <option value="other">استشارة تقنية / أخرى</option>
+                            <option value="web" data-i18n="opt_web">منصة ويب متكاملة</option>
+                            <option value="app" data-i18n="opt_app">تطبيق جوال</option>
+                            <option value="ui" data-i18n="opt_ui">هندسة واجهات (UI/UX)</option>
+                            <option value="other" data-i18n="opt_other">استشارة تقنية / أخرى</option>
                         </select>
                     </div>
                     <textarea id="form-msg" rows="4" placeholder="حدثني عن تفاصيل رؤيتك..."
@@ -619,7 +709,7 @@
             </div>
 
             <div class="footer-bottom">
-                <p>&copy; 2025 <span data-i18n="footer_rights">جميع الحقوق محفوظة لأحمد الغانمي</span></p>
+                <p>&copy; 2026 <span data-i18n="footer_rights">جميع الحقوق محفوظة لأحمد الغانمي</span></p>
             </div>
         </div>
     </footer>
@@ -663,21 +753,38 @@
         </div>
     </div>
 
-    <!-- ===== LIVE CHAT WIDGET ===== -->
+    <!-- ===== SCROLL TO TOP BUTTON (Desktop) ===== -->
+    <button id="scrollTopBtn" class="scroll-top-btn" onclick="window.scrollTo({top:0,behavior:'smooth'})"
+        aria-label="Scroll to top">
+        <div class="scroll-top-pulse"></div>
+        <div class="scroll-top-inner">
+            <i class="fa-solid fa-arrow-up"></i>
+        </div>
+        <svg class="scroll-top-progress-ring" viewBox="0 0 56 56">
+            <circle class="ring-track" cx="28" cy="28" r="24" />
+            <circle class="ring-fill" cx="28" cy="28" r="24" id="scrollRingFill" />
+        </svg>
+    </button>
+
+    <!-- ===== LIVE CHAT WIDGET v2.0 Elite ===== -->
     <div id="chat-widget" class="chat-widget" role="complementary" aria-label="Live Chat">
-        <!-- Chat Bubble Button -->
-        <button class="chat-bubble-btn" id="chatToggleBtn" aria-label="Open Chat" aria-expanded="false">
-            <div class="chat-bubble-icon">
-                <i class="fa-solid fa-comment-dots chat-icon-open" aria-hidden="true"></i>
-                <i class="fa-solid fa-xmark chat-icon-close" aria-hidden="true"></i>
-            </div>
+        <!-- Chat Bubble — Premium Pill Button -->
+        <button class="chat-bubble-btn mobile-hide" id="chatToggleBtn" aria-label="Open Chat" aria-expanded="false">
             <div class="chat-bubble-pulse"></div>
-            <div class="chat-bubble-badge" id="chatBadge">1</div>
+            <div class="chat-bubble-badge" id="chatBadge"></div>
+            <div class="chat-bubble-inner">
+                <span class="chat-bubble-icon-wrap">
+                    <i class="fa-solid fa-comment-dots chat-icon-open" aria-hidden="true"></i>
+                    <i class="fa-solid fa-xmark chat-icon-close" aria-hidden="true"></i>
+                </span>
+                <span class="chat-bubble-label" data-i18n="chat_label">ابدأ محادثة</span>
+            </div>
         </button>
 
-        <!-- Chat Panel -->
+        <!-- Chat Panel v2.0 -->
         <div class="chat-panel glass-card" id="chatPanel" role="dialog" aria-modal="true"
             aria-labelledby="chatPanelTitle">
+
             <!-- Header -->
             <div class="chat-panel-header">
                 <div class="chat-header-avatar">
@@ -693,43 +800,84 @@
                 </button>
             </div>
 
-            <!-- Body: Welcome Screen -->
+            <!-- Body -->
             <div class="chat-body" id="chatBody">
                 <!-- Welcome State -->
                 <div class="chat-welcome" id="chatWelcome">
-                    <div class="chat-welcome-icon">
-                        <i class="fa-solid fa-bolt-lightning"></i>
+                    <div class="chat-welcome-avatar">
+                        <img src="images/dn.png" alt="Ahmed">
+                        <div class="chat-welcome-badge"><i class="fa-solid fa-bolt-lightning"></i></div>
                     </div>
                     <h4 data-i18n="chat_welcome_title">أهلاً! كيف يمكنني مساعدتك؟</h4>
-                    <p data-i18n="chat_welcome_desc">اختر إحدى الطرق أدناه للبدء — سأرد عليك في أقرب وقت.</p>
+                    <p data-i18n="chat_welcome_desc">اختر موضوع المحادثة للبدء — سأرد عليك في أقرب وقت.</p>
 
-                    <!-- Quick Actions -->
+                    <!-- Quick Actions Grid -->
                     <div class="chat-quick-actions">
-                        <button class="chat-quick-btn" id="chatQuickProject" data-i18n="chat_quick_project">
-                            <i class="fa-solid fa-rocket"></i> مناقشة مشروع جديد
+                        <button class="chat-quick-btn" id="chatQuickAbout">
+                            <i class="fa-solid fa-user-tie"></i>
+                            <span data-i18n="chat_quick_about">من أنا؟</span>
+                            <i class="fa-solid fa-chevron-left chat-arrow"></i>
                         </button>
-                        <button class="chat-quick-btn" id="chatQuickPrice" data-i18n="chat_quick_price">
-                            <i class="fa-solid fa-tag"></i> الاستفسار عن الأسعار
+                        <button class="chat-quick-btn" id="chatQuickProject">
+                            <i class="fa-solid fa-rocket"></i>
+                            <span data-i18n="chat_quick_project">مناقشة مشروع جديد</span>
+                            <i class="fa-solid fa-chevron-left chat-arrow"></i>
                         </button>
-                        <button class="chat-quick-btn" id="chatQuickOther" data-i18n="chat_quick_other">
-                            <i class="fa-solid fa-circle-question"></i> سؤال آخر
+                        <button class="chat-quick-btn" id="chatQuickPrice">
+                            <i class="fa-solid fa-tag"></i>
+                            <span data-i18n="chat_quick_price">الاستفسار عن الأسعار</span>
+                            <i class="fa-solid fa-chevron-left chat-arrow"></i>
                         </button>
+                        <button class="chat-quick-btn" id="chatQuickOther">
+                            <i class="fa-solid fa-circle-question"></i>
+                            <span data-i18n="chat_quick_other">سؤال آخر</span>
+                            <i class="fa-solid fa-chevron-left chat-arrow"></i>
+                        </button>
+                    </div>
+
+                    <!-- Social shortcuts -->
+                    <div class="chat-welcome-socials">
+                        <a href="https://wa.me/905355255446" target="_blank" rel="noopener noreferrer" class="chat-soc-pill wa">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                        </a>
+                        <a href="mailto:hello@devnaji.com" class="chat-soc-pill em">
+                            <i class="fa-solid fa-envelope"></i> Email
+                        </a>
                     </div>
                 </div>
 
                 <!-- Form State (hidden by default) -->
                 <div class="chat-form-state" id="chatFormState" style="display:none;">
-                    <div class="chat-messages" id="chatMessages">
-                        <!-- Bot greeting message will be injected here -->
+                    <!-- Step Progress Bar -->
+                    <div class="chat-progress-wrap" style="display:none;">
+                        <div class="chat-step-dots">
+                            <span class="chat-step-dot active"></span>
+                            <span class="chat-step-dot"></span>
+                            <span class="chat-step-dot"></span>
+                        </div>
+                        <div class="chat-step-bar-track">
+                            <div class="chat-step-bar" id="chatStepBar"></div>
+                        </div>
                     </div>
+
+                    <div class="chat-messages" id="chatMessages"></div>
+
                     <div class="chat-input-area">
                         <input type="text" id="chatNameInput" class="chat-input"
-                            data-i18n-placeholder="chat_name_placeholder" placeholder="اسمك الكريم..." maxlength="60">
-                        <input type="text" id="chatMessageInput" class="chat-input"
-                            data-i18n-placeholder="chat_msg_placeholder" placeholder="اكتب رسالتك..." maxlength="500"
-                            style="display:none;">
+                            data-i18n-placeholder="chat_name_placeholder"
+                            placeholder="اسمك الكريم..." maxlength="60" autocomplete="given-name">
+                        <input type="text" id="chatContactInput" class="chat-input"
+                            data-i18n-placeholder="chat_contact_placeholder"
+                            placeholder="الهاتف أو البريد الإلكتروني..." maxlength="100"
+                            style="display:none;" autocomplete="email">
+                        <textarea id="chatMessageInput" class="chat-input chat-textarea"
+                            data-i18n-placeholder="chat_msg_placeholder"
+                            placeholder="اكتب رسالتك..." maxlength="500" rows="3"
+                            style="display:none;"></textarea>
                         <div class="chat-send-row">
-                            <button class="chat-send-btn" id="chatSendNameBtn" data-i18n="chat_next">التالي</button>
+                            <button class="chat-send-btn" id="chatSendNameBtn" data-i18n="chat_next">
+                                التالي <i class="fa-solid fa-arrow-left"></i>
+                            </button>
                         </div>
                     </div>
                 </div>
@@ -753,19 +901,72 @@
             <!-- Footer -->
             <div class="chat-panel-footer">
                 <i class="fa-solid fa-shield-halved"></i>
-                <span data-i18n="chat_footer_note">محادثة آمنة ومشفرة · DevNaji © 2025</span>
+                <span data-i18n="chat_footer_note">محادثة آمنة ومشفرة · DevNaji © 2026</span>
             </div>
         </div>
     </div>
     <!-- ===== END CHAT WIDGET ===== -->
 
+    <!-- Mobile Bottom Navigation (App-like) -->
+
+    <nav class="mobile-bottom-nav">
+        <a href="#home" class="bottom-nav-item active" data-section="home">
+            <i class="fa-solid fa-house"></i>
+            <span data-i18n="nav_home">الرئيسية</span>
+        </a>
+        <a href="#portfolio" class="bottom-nav-item" data-section="portfolio">
+            <i class="fa-solid fa-briefcase"></i>
+            <span data-i18n="nav_portfolio">أعمالي</span>
+        </a>
+        <a href="javascript:void(0)" class="bottom-nav-item center-chat-btn" id="mobChatNavBtn"
+            onclick="event.stopPropagation(); if(typeof window.toggleChat==='function'){window.toggleChat(event);}">
+            <div class="chat-circle">
+                <i class="fa-solid fa-comment-dots"></i>
+                <div class="badge"></div>
+            </div>
+            <span data-i18n="nav_chat">محادثة</span>
+        </a>
+        <a href="javascript:void(0)" class="bottom-nav-item" id="mobSocialBtn"
+            onclick="document.getElementById('socialActionSheet').classList.add('active')">
+            <i class="fa-solid fa-share-nodes"></i>
+            <span data-i18n="nav_socials">حساباتي</span>
+        </a>
+        <a href="#contact" class="bottom-nav-item" data-section="contact">
+            <i class="fa-solid fa-envelope"></i>
+            <span data-i18n="nav_contact">تواصل</span>
+        </a>
+    </nav>
+
+    <!-- Native App-like Social Action Sheet -->
+    <div class="social-action-sheet" id="socialActionSheet">
+        <div class="sheet-overlay" onclick="document.getElementById('socialActionSheet').classList.remove('active')">
+        </div>
+        <div class="sheet-content">
+            <div class="sheet-handle"></div>
+            <h3 data-i18n="hero_social_label"
+                style="text-align:center; margin-bottom:25px; font-size:1.2rem; color:#fff;">حساباتي</h3>
+            <div class="sheet-social-grid">
+                <a href="https://wa.me/905355255446" class="sheet-soc-btn wa" target="_blank"><i
+                        class="fa-brands fa-whatsapp"></i><span>WhatsApp</span></a>
+                <a href="https://www.instagram.com/dev.naji/" class="sheet-soc-btn ig" target="_blank"><i
+                        class="fa-brands fa-instagram"></i><span>Instagram</span></a>
+                <a href="https://x.com/dev_naji" class="sheet-soc-btn tw" target="_blank"><i
+                        class="fa-brands fa-x-twitter"></i><span>Twitter</span></a>
+                <a href="https://www.linkedin.com/in/ahmed-al-ghanmi-31b21b3b9/" class="sheet-soc-btn li"
+                    target="_blank"><i class="fa-brands fa-linkedin-in"></i><span>LinkedIn</span></a>
+                <a href="https://github.com/Ahmed-AL-Ghanmi" class="sheet-soc-btn gh" target="_blank"><i
+                        class="fa-brands fa-github"></i><span>GitHub</span></a>
+            </div>
+        </div>
+    </div>
+
     <!-- JS Libraries -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js" defer></script>
-    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js" defer></script>
-    <script src="js/translations.js?v=28.0"></script>
-    <script src="projects.js?v=28.0"></script>
-    <script src="js/script.js?v=28.0"></script>
-    <script src="js/chat.js?v=28.0"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.0/vanilla-tilt.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/studio-freight/lenis@1.0.29/bundled/lenis.min.js"></script>
+    <script src="js/translations.js?v=32.0"></script>
+    <script src="projects.js?v=32.0"></script>
+    <script src="js/script.js?v=32.0"></script>
+    <script src="js/chat.js?v=32.0"></script>
 
 </body>
 
